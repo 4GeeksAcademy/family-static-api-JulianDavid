@@ -16,7 +16,22 @@ class FamilyStructure:
                 "last_name": last_name,
                 "age": 33,
                 "lucky_numbers": [7, 13, 22]
+            },
+             {
+                "id": self._generate_id(),
+                "first_name": "Jane ",
+                "last_name": last_name,
+                "age": 35,
+                "lucky_numbers": [10, 14, 3]
+            },
+             {
+                "id": self._generate_id(),
+                "first_name": "Jimmy ",
+                "last_name": last_name,
+                "age": 5,
+                "lucky_numbers": [1]
             }
+
         ]
 
     # This method generates a unique incremental ID
@@ -33,12 +48,16 @@ class FamilyStructure:
     def delete_member(self, id):
         ## You have to implement this method
         ## Loop the list and delete the member with the given id
+        self._member = [i for i in self._members if i ["id"] != id]
         pass
 
     def get_member(self, id):
         ## You have to implement this method
         ## Loop all the members and return the one with the given id
-        pass
+        for i in self._members:
+            if i['id'] == id:
+                return i
+        
 
     # This method is done, it returns a list with all the family members
     def get_all_members(self):
