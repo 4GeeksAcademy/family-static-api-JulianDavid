@@ -35,7 +35,7 @@ def handle_hello():
     members = jackson_family.get_all_members()
     return jsonify(members), 200
 
-@app.route('/members <int:member_id>', methods=['GET'])
+@app.route('/members/<int:member_id>', methods=['GET'])
 def get_member(member_id):
     try:
         member = jackson_family.get_member(member_id)
@@ -53,15 +53,16 @@ def new_menber():
         if "first_name" not in data:
             return "error, falta nombre en el body", 400
         if "age" not in data:
-            return "error, falta endad en body", 400
+            return "error, falta edad en body", 400
         if "lucky_numbers" not in data:
             return "error, falta lucky numbers en body", 400
+        jackson_family.add_member(data)
         return jsonify(data), 200
     except: 
         print("Pasó algo extraño")
-        return "error, servidor roto", 500
+        return "error, servidor descompuesto", 500
 
-@app.route('/members <int:member_id>', methods=['DELETE'])
+@app.route('/members/<int:member_id>', methods=['DELETE'])
 def delete_member(member_id):
     try:
         jackson_family.delete_member(member_id)

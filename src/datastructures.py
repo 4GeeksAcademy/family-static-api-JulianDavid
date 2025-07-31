@@ -43,13 +43,15 @@ class FamilyStructure:
     def add_member(self, member):
         ## You have to implement this method
         ## Append the member to the list of _members
-        pass
+        member["id"] = self._generate_id()
+        member["last_name"] = self.last_name
+        self._members.append(member)
 
     def delete_member(self, id):
         ## You have to implement this method
         ## Loop the list and delete the member with the given id
-        self._member = [i for i in self._members if i ["id"] != id]
-        pass
+        self._members = [i for i in self._members if i ["id"] != id]
+        return self._members
 
     def get_member(self, id):
         ## You have to implement this method
